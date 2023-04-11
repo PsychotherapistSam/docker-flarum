@@ -91,14 +91,14 @@ services:
     image: mondedie/flarum:stable
     container_name: flarum
     env_file:
-      - /mnt/docker/flarum/flarum.env
+      - ./flarum/flarum.env
     volumes:
-      - /mnt/docker/flarum/assets:/flarum/app/public/assets
-      - /mnt/docker/flarum/extensions:/flarum/app/extensions
-      - /mnt/docker/flarum/storage/logs:/flarum/app/storage/logs
-      - /mnt/docker/flarum/nginx:/etc/nginx/flarum
+      - ./flarum/assets:/flarum/app/public/assets
+      - ./flarum/extensions:/flarum/app/extensions
+      - ./flarum/storage/logs:/flarum/app/storage/logs
+      - ./flarum/nginx:/etc/nginx/flarum
     ports:
-      - 80:8888
+      - 8888:8888
     depends_on:
       - mariadb
 
@@ -111,7 +111,7 @@ services:
       - MYSQL_USER=flarum
       - MYSQL_PASSWORD=xxxxxxxxxx
     volumes:
-      - /mnt/docker/mysql/db:/var/lib/mysql
+      - ./mysql/db:/var/lib/mysql
 ```
 
 #### 3 - Run it
